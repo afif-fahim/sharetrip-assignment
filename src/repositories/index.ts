@@ -1,7 +1,7 @@
 import { Document, Model } from 'mongoose';
 
-import SearchResult, { ISearchResult } from '../models/SearchResult';
-import UserSearch, { IUserSearch } from '../models/UserSearch';
+import SearchResult, { ISearchResult } from 'models/SearchResult';
+import UserSearch, { IUserSearch } from 'models/UserSearch';
 
 
 class BaseRepository<T extends Document> {
@@ -13,6 +13,10 @@ class BaseRepository<T extends Document> {
 
     create(data: any): Promise<T> {
         return this.model.create(data);
+    }
+
+    update(id: string, data: any): Promise<T> {
+        return this.model.findByIdAndUpdate(id, data, { new: true });
     }
 }
 

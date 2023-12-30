@@ -1,9 +1,9 @@
 import { Document, Schema, model } from 'mongoose';
 
+
 export interface IUserSearch extends Document {
     keyword: string;
     results: Schema.Types.ObjectId[];
-    timestamp: Date;
     userIp: string;
 }
 

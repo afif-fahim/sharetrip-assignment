@@ -1,5 +1,6 @@
 import { Document, Schema, model } from 'mongoose';
 
+
 export interface ISearchResult extends Document {
     id: number;
     userId: number;
