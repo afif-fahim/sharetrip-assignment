@@ -5,6 +5,12 @@ import { IPostApiData } from '../services/postApi';
 import { SearchResultRepository, UserSearchRepository } from '../repositories';
 
 
+/**
+ * Handles the search functionality based on the provided keyword.
+ * Saves user search and associated results, if any, with the user's IP.
+ * @param req - request object
+ * @param res - response object
+ */
 export const search = async (req: Request, res: Response) => {
     try {
         const keyword = req.query.keyword as string;
@@ -17,6 +23,7 @@ export const search = async (req: Request, res: Response) => {
         // Save user's search and associate it with the user's IP
         const userSearch = await userSearchRepo.create({ keyword, results: [], userIp });
 
+        // Filter posts that match the keyword
         const matchedPosts = postApiData.filter(
             post => post.title.toLowerCase().includes(keyword.toLowerCase()) ||
                     post.body.toLowerCase().includes(keyword.toLowerCase())

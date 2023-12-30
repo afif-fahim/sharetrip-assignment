@@ -1,6 +1,9 @@
 import { Document, Schema, model } from 'mongoose';
 
 
+/**
+ * Interface representing the structure of a SearchResult document in MongoDB.
+ */
 export interface ISearchResult extends Document {
     id: number;
     userId: number;
@@ -9,6 +12,7 @@ export interface ISearchResult extends Document {
     userSearch: Schema.Types.ObjectId;
 }
 
+// Define the Mongoose schema for the SearchResult model
 const searchResultSchema = new Schema(
     {
         id: { type: Number, required: true },
@@ -20,4 +24,5 @@ const searchResultSchema = new Schema(
     { timestamps: true }
 );
 
+// Create and export the Mongoose model for SearchResult
 export default model<ISearchResult>('SearchResult', searchResultSchema);
