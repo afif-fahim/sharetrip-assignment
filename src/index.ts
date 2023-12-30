@@ -4,6 +4,7 @@ import cors from "cors";
 
 import config from "./configs"
 import database from "./database"
+import router from "./router";
 
 
 const app = express();
@@ -39,3 +40,5 @@ process.once("SIGINT", async () => {
     server.close();
     process.exit(0);
 });
+
+app.use("/", router());

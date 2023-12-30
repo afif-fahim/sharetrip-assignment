@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-import config from 'configs';
+import config from '../configs';
 
 
 interface IPostApiData {

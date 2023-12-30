@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
-import PostApiService from 'services/postApi';
-import { SearchResultRepository, UserSearchRepository } from 'repositories';
+import PostApiService from '../services/postApi';
+import { SearchResultRepository, UserSearchRepository } from '../repositories';
 
 
 export const search = async (req: Request, res: Response) => {
