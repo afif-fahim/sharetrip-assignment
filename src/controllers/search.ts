@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
+import { get } from "lodash";
 
-import PostApiService from '../services/postApi';
+import { IPostApiData } from '../services/postApi';
 import { SearchResultRepository, UserSearchRepository } from '../repositories';
 
 
@@ -9,7 +10,7 @@ export const search = async (req: Request, res: Response) => {
         const keyword = req.query.keyword as string;
         const userIp = req.ip;
 
-        const postApiData = await PostApiService.getData();
+        const postApiData = get(req, 'postApiData') as IPostApiData[];
 
         const userSearchRepo = new UserSearchRepository();
 
