@@ -6,11 +6,13 @@ dotenv.config();
 
 interface IEnvVars {
     PORT: number;
+    MONGO_CONNECTION_STRING: string;
 }
 
 const envVarsSchema: Joi.ObjectSchema<IEnvVars> = Joi.object()
     .keys({
         PORT: Joi.number().default(3000),
+        MONGO_CONNECTION_STRING: Joi.string().required().description("MongoDB connection string"),
     })
     .unknown();
 
@@ -22,6 +24,9 @@ if (error) {
 
 const config = {
     port: envVars.PORT,
+    mongo: {
+        connectionString: envVars.MONGO_CONNECTION_STRING,
+    },
 };
 
 export default config;
