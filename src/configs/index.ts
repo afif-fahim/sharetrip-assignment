@@ -7,12 +7,14 @@ dotenv.config();
 interface IEnvVars {
     PORT: number;
     MONGO_CONNECTION_STRING: string;
+    POST_API_URL: string;
 }
 
 const envVarsSchema: Joi.ObjectSchema<IEnvVars> = Joi.object()
     .keys({
         PORT: Joi.number().default(3000),
         MONGO_CONNECTION_STRING: Joi.string().required().description("MongoDB connection string"),
+        POST_API_URL: Joi.string().required().description("URL of external post API"),
     })
     .unknown();
 
@@ -26,6 +28,9 @@ const config = {
     port: envVars.PORT,
     mongo: {
         connectionString: envVars.MONGO_CONNECTION_STRING,
+    },
+    postAPI: {
+        url: envVars.POST_API_URL,
     },
 };
 
