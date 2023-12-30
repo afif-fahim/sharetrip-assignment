@@ -7,18 +7,22 @@ import { SearchResultRepository, UserSearchRepository } from '../repositories';
 export const search = async (req: Request, res: Response) => {
     try {
         const keyword = req.query.keyword as string;
-
         const userIp = req.ip;
 
         const postApiData = await PostApiService.getData();
-        const matchedPosts = postApiData.filter(post => post.title.includes(keyword) || post.body.includes(keyword));
+
+        const userSearchRepo = new UserSearchRepository();
+
+        // Save user's search and associate it with the user's IP
+        const userSearch = await userSearchRepo.create({ keyword, results: [], userIp });
+
+        const matchedPosts = postApiData.filter(
+            post => post.title.toLowerCase().includes(keyword.toLowerCase()) ||
+                    post.body.toLowerCase().includes(keyword.toLowerCase())
+        );
 
         if (matchedPosts.length > 0) {
             const searchResultRepo = new SearchResultRepository();
-            const userSearchRepo = new UserSearchRepository();
-
-            // Save user's search and associate it with the user's IP
-            const userSearch = await userSearchRepo.create({ keyword, results: [], userIp });
 
             // Save search results and associate them with the user's search
             const savedResults: any = await searchResultRepo.create(
