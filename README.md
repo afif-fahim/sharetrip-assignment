@@ -1,23 +1,21 @@
 # ShareTrip Assignment
 
-A RESTful API containing one endpoint `/search` for searching. Developed in **Node.js**.
+A RESTful API containing one endpoint `/search` for searching posts from an external API. Developed in **Node.js**.
 
 ## Table of Contents
 
-- [ShareTrip Assignment](#sharetrip-assignment)
-  - [Table of Contents](#table-of-contents)
-  - [Built With](#built-with)
-  - [Installation](#installation)
-    - [Clone the repository](#clone-the-repository)
-    - [Setup .env File](#setup-env-file)
-    - [Install Depndencies](#install-depndencies)
-    - [Run the App](#run-the-app)
-  - [Usage](#usage)
-    - [Search Endpoint](#search-endpoint)
+- [Built With](#built-with)
+- [Installation](#installation)
+  - [Clone the repository](#clone-the-repository)
+  - [Setup .env File](#setup-env-file)
+  - [Install Depndencies](#install-depndencies)
+  - [Run the App](#run-the-app)
+- [Usage](#usage)
+  - [Search Endpoint](#search-endpoint)
 
 ## Built With
 
-Tools used to develop this
+Tools used to develop this project.
 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
