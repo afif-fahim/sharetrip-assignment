@@ -10,6 +10,7 @@ interface IEnvVars {
     POST_API_URL: string;
 }
 
+// Define a Joi schema for environment variable validation
 const envVarsSchema: Joi.ObjectSchema<IEnvVars> = Joi.object()
     .keys({
         PORT: Joi.number().default(3000),
@@ -24,6 +25,7 @@ if (error) {
     throw new Error(`Config validation error: ${error.message}`);
 }
 
+// Create a configuration object based on validated environment variables
 const config = {
     port: envVars.PORT,
     mongo: {
